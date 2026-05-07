@@ -189,146 +189,596 @@
   </head>
 
   <body>
+<!-- ========================= TITLE BLOCK ========================= -->
 
-		<div class="content-margin-container">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<table class="header" align=left>
-								<tr>
-									<td colspan=4>
-										<span style="font-size: 32px; font-family: 'Courier New', Courier, monospace; /* Adds fallbacks */">The Prestige Safety Net: Does What Schools Say Online Match Rankings?</span>
-									</td>
-								</tr>
-								<tr>
-										<td align=left>
-												<span style="font-size:17px"><a href="your_website">Yuni Chun</a></span>
-										</td>
-										<td align=left>
-												<span style="font-size:17px"><a href="your_partner's_website">Angelina Jia</a></span>
-										</td>
-								<tr>
-									<td colspan=4 align=left><span style="font-size:18px">Final project for STAT3106, Columbia University</span></td>
-								</tr>
-						</table>
-					</div>
-					<div class="margin-right-block">
-					</div>
-		</div>
+<div class="content-margin-container">
+    <div class="margin-left-block">
+    </div>
 
-		<div class="content-margin-container" id="intro">
-				<div class="margin-left-block">
-          <!-- table of contents here -->
-          <div style="position:fixed; max-width:inherit; top:max(20%,120px)">
-              <b style="font-size:16px">Outline</b><br><br>
-              <a href="#intro">Introduction</a><br><br>
-              <a href="#does_x_do_y">Does X do Y?</a><br><br>
-              <a href="#implications_and_limitations">Implications and limitations</a><br><br>
-          </div>
-				</div>
-		    <div class="main-content-block">
-            <!--You can embed an image like this:-->
-            <img src="./images/your_image_here.png" width=512px/>
-		    </div>
-		    <div class="margin-right-block">
-						Caption for the image.
-		    </div>
-		</div>
+    <div class="main-content-block">
+        <table class="header" align="left">
+            <tr>
+                <td colspan="4">
+                    <span style="font-size: 34px; font-family: 'Courier New', Courier, monospace;">
+                        The Prestige Safety Net: Does What Schools Say Online Match Rankings?
+                    </span>
+                </td>
+            </tr>
 
-    <div class="content-margin-container" id="intro">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<h1>Introduction</h1>
-            When applying to college, most of us have gone down the rabbit hole of YouTube vlogs, Reddit threads, and college influencer content, trying to figure out where to go. But how much of what we see actually reflects reality? This project investigates whether the narratives that colleges and their students project on social media align with the actual financial outcomes of attending those schools. We’re particularly interested in whether content creators strategically highlight what they can control, like campus culture and aesthetics, while avoiding what they can’t, like job placement rates and earnings. We hypothesize that elite schools benefit from a prestige safety net that lets their content focus on intangibles, while non-elite schools feel more pressure to emphasize ROI. If students are making major decisions based on social media, it matters whether that content is telling the full story.
-This project investigates whether the prestige colleges project on social media reflects the actual financial outcomes of their graduates. Using the YouTube Data API and Reddit API, we collect transcripts and posts across a sample of universities, apply zero-shot topic classification and sentiment analysis using pretrained NLP models, and use those features to predict each school's graduate earnings tier sourced from College Scorecard. We compare this against a baseline using only institutional characteristics, evaluating both with F1 score. We hypothesize that elite school content skews toward optics-driven topics like campus aesthetics while non-elite content emphasizes ROI-driven topics like careers and scholarships, revealing a disconnect between projected and actual prestige. Relevant columns from the institutional data include school name, acceptance rate, and median earnings 10 years out from graduation. 
-Existing research shows that social media now plays a meaningful role in how students evaluate colleges, but most of that literature focuses on recruitment and branding rather than whether online narratives correspond to measurable post-graduation outcomes. Early work in higher-education marketing found that institutions were increasingly using social media as part of their recruitment strategy and argued that its influence on study selection and university choice was still inadequately understood. A later admissions-focused summary reported that 63% of students use social media to research colleges, two in five use it to help decide which school to attend, and that YouTube was among the most-used platforms for this purpose. More recent scholarship has shifted toward institutional strategy: a 2026 Journal of the Academy of Marketing Science study analyzed more than 1.2 million posts from 94 U.K. universities and found that social media content emphasizing different dimensions of university quality affects student acquisition differently, with higher-ranked institutions benefiting more from environment-focused signaling and lower-ranked institutions benefiting more from interaction-focused signaling. At the same time, reviews of university branding research suggest that the literature is still centered on reputation, brand equity, and engagement, rather than on whether brand narratives accurately reflect underlying institutional value.
-Therefore, we plan to address a gap in the literature by connecting what colleges and students emphasize on social media to objective return-on-investment outcomes, specifically post-graduate earnings tiers as displayed in the dataset from College Scorecard. Existing studies largely ask whether social media helps universities attract students or shape reputation; they do not generally test whether the themes and sentiments in student- and institution-generated content vary in alignment with independently measured financial outcomes. Our project extends this literature by using NLP on YouTube and Reddit content to examine whether prestige-driven narratives systematically diverge from graduate earnings, and whether elite and non-elite institutions differ in how they frame value to prospective students. College Scorecard is well equipped to provide public information on salaries and related post-college outcomes, effectively lending itself to the comparison of online narratives with earnings-based measures of value. 
+            <tr>
+                <td align="left">
+                    <span style="font-size:17px">
+                        <a href="">Yuni Chun</a>
+                    </span>
+                </td>
 
-		    </div>
-		    <div class="margin-right-block">
-						Margin note that clarifies some detail #main-content-block for intro section.
-		    </div>
-		</div>
+                <td align="left">
+                    <span style="font-size:17px">
+                        <a href="">Angelina Jia</a>
+                    </span>
+                </td>
+            </tr>
 
-		<div class="content-margin-container" id="does_x_do_y">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-					<h1>Does X do Y?</h1>
-				  It is well known that Y does Y. And this has raised the question does X do Y? Because if Y does Y then it stands to reason that X does Y.
-          But we cannot answer this until we realize the Z implies Y and X can be linked to Z.<br><br>
+            <tr>
+                <td colspan="4" align="left">
+                    <span style="font-size:18px">
+                        Final Project for STAT3106, Columbia University
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-          Now let's write some math!<br>
-          <center>
-            <math xmlns="http://www.w3.org/1998/Math/MathML">
-              <mrow>
-                <mrow>
-                  <mo>&#x2202;</mo>
-                  <mi>y</mi>
-                </mrow>
-                <mo>/</mo>
-                <mrow>
-                  <mo>&#x2202;</mo>
-                  <mi>x</mi>
-                </mrow>
-              </mrow>
-              <mo>=</mo>
-              <mi>x</mi>
-            </math>
-          </center>
-          <br>
-          It's probably best to ask an LLM to help do the web
-          formatting for math. You can tell it "convert this latex equation into MathML: $$\frac{\partial dy}{\partial dx} = x$$"
-          But it took me a few tries. So, if you get frustrated, you can embed an image of the equation, or use other packages for
-          rendering equations on webpages.
-		    </div>
-		    <div class="margin-right-block" style="transform: translate(0%, -100%);"> <!-- you can move the margin notes up and down with translate -->
-          Interestingly, Plato also asked if X does Y, in <a href="#ref_1">[1]</a>.
-		    </div>
-		</div>
+    <div class="margin-right-block">
+    </div>
+</div>
 
-		<div class="content-margin-container">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-            <h1>Another section</h1>
-            In this section we embed a video:
-						<video class='my-video' loop autoplay muted style="width: 725px">
-								<source src="./images/mtsh.mp4" type="video/mp4">
-						</video>
-		    </div>
-		    <div class="margin-right-block">
-					A caption for the video could go here.
-		    </div>
-		</div>
+<!-- ========================= TABLE OF CONTENTS ========================= -->
 
-		<div class="content-margin-container" id="implications_and_limitations">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<h1>Implications and limitations</h1>
-						Let's end with some discussion of the implications and limitations.
-		    </div>
-		    <div class="margin-right-block">
-		    </div>
-		</div>
+<div class="content-margin-container" id="intro">
 
-		<div class="content-margin-container" id="citations">
-				<div class="margin-left-block">
-				</div>
-		    <div class="main-content-block">
-						<div class='citation' id="references" style="height:auto"><br>
-							<span style="font-size:16px">References:</span><br><br>
-							<a id="ref_1"></a>[1] <a href="https://en.wikipedia.org/wiki/Allegory_of_the_cave">Allegory of the Cave</a>, Plato, c. 375 BC<br><br>
-							<a id="ref_2"></a>[2] <a href="">A Human-Level AGI</a>, OpenAI, 2025<br><br>
-						</div>
-		    </div>
-		    <div class="margin-right-block">
-            <!-- margin notes for reference block here -->
-		    </div>
-		</div>
+    <div class="margin-left-block">
+        <div style="position:fixed; max-width:inherit; top:max(20%,120px)">
+            <b style="font-size:16px">Outline</b><br><br>
 
+            <a href="#background">Motivation & Background</a><br><br>
+
+            <a href="#methodology">Methodology</a><br><br>
+
+            <a href="#baseline">Baseline Model</a><br><br>
+
+            <a href="#youtube">YouTube Model</a><br><br>
+
+            <a href="#comparison">Model Comparison</a><br><br>
+
+            <a href="#analysis">Analysis & Limitations</a><br><br>
+
+            <a href="#conclusion">Conclusions</a><br><br>
+
+            <a href="#references">References</a><br><br>
+        </div>
+    </div>
+
+    <div class="main-content-block">
+
+        <img src="./images/hero_image.png" width="850px"/>
+
+    </div>
+
+    <div class="margin-right-block">
+        Example hero image or visualization for the project.
+    </div>
+</div>
+
+<!-- ========================= BACKGROUND ========================= -->
+
+<div class="content-margin-container" id="background">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Motivation and Background</h1>
+
+        <p>
+            Every year, high school seniors fall down the YouTube rabbit hole when deciding which college to attend.
+            Dorm tours and day-in-my-life vlogs seem like obvious primary sources to evaluate a potential university.
+            But does any of it actually reflect reality?
+        </p>
+
+        <p>
+            This project investigates whether the narratives projected about colleges on social media align with
+            their actual prestige. We are particularly interested in whether content creators from elite schools
+            benefit from a “prestige safety net” that allows their content to lean on intangibles such as campus
+            culture and aesthetics, while non-elite schools feel more pressure to advertise aspects more directly
+            related to ROI.
+        </p>
+
+        <p>
+            Research shows that social media increasingly shapes how students choose colleges.
+            A 2025 survey found that 60% of students use social media to research colleges,
+            with YouTube being one of the most used platforms.
+            Another study found that 69% of applicants used social media to research
+            postsecondary institutions primarily to understand campus life and student experience.
+        </p>
+
+        <p>
+            A 2026 study in the Journal of the Academy of Marketing Science analyzed over one million
+            social media posts from UK universities. It found that elite schools gain more engagement
+            from posts about campus aesthetics and facilities, while non-elite schools perform better
+            when emphasizing student support and personal interaction.
+        </p>
+
+        <p>
+            Existing literature has focused primarily on university recruitment strategy and brand equity,
+            not on whether the themes in college-related content systematically vary by prestige tier.
+            This is the gap we aim to investigate.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        Social media increasingly functions as a college search engine for prospective students.
+    </div>
+</div>
+
+<!-- ========================= METHODOLOGY ========================= -->
+
+<div class="content-margin-container" id="methodology">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Methodology Overview</h1>
+
+        <p>
+            We frame prestige prediction as a binary classification task:
+            predicting whether a university belongs to the “elite” category.
+        </p>
+
+        <p>
+            We compare two modeling approaches:
+        </p>
+
+        <ul>
+            <li>Institutional-data-based baseline model</li>
+            <li>YouTube transcript-based NLP model</li>
+        </ul>
+
+        <p>
+            Institutional features were sourced from the U.S. Department of Education’s
+            College Scorecard dataset, while prestige labels were derived from
+            U.S. News rankings.
+        </p>
+
+        <p>
+            We scraped YouTube transcripts using yt-dlp and constructed NLP pipelines
+            using TF-IDF, logistic regression, engineered sentiment features,
+            and Bidirectional LSTMs.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        We compare structured institutional information against social-media-derived language features.
+    </div>
+</div>
+
+<!-- ========================= BASELINE MODEL ========================= -->
+
+<div class="content-margin-container" id="baseline">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Baseline Model Architecture</h1>
+
+        <h2>Data</h2>
+
+        <p>
+            We merged College Scorecard institutional data with U.S. News rankings,
+            defining elite institutions as schools ranked within the national top 30.
+        </p>
+
+        <h2>Baseline Model</h2>
+
+        <p>
+            We constructed an MLP using eleven institutional characteristics
+            and trained using weighted loss to compensate for severe class imbalance.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        Elite schools made up only around 10% of the dataset.
+    </div>
+</div>
+
+<!-- ========================= IMAGE BLOCK ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <img src="./images/image1.png" width="700px"/>
+
+    </div>
+
+    <div class="margin-right-block">
+        Training and validation loss curves for the institutional MLP baseline.
+    </div>
+</div>
+
+<!-- ========================= BASELINE RESULTS ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <p>
+            The baseline MLP converges steadily over training epochs,
+            with validation loss decreasing consistently.
+            Mild overfitting emerges later in training,
+            though overall validation performance remains strong.
+        </p>
+
+        <p>
+            The model achieves a weighted F1 score of 0.94 and overall
+            accuracy of 0.93 on the validation set.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        Institutional variables alone provide very strong predictive signal.
+    </div>
+</div>
+
+<!-- ========================= YOUTUBE MODEL ========================= -->
+
+<div class="content-margin-container" id="youtube">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>YouTube Model Architecture</h1>
+
+        <h2>YouTube Data Loading and Preprocessing</h2>
+
+        <p>
+            We sampled 40 schools (20 elite and 20 non-elite)
+            and queried YouTube using prompts such as:
+        </p>
+
+        <ul>
+            <li>"[university] day in my life"</li>
+            <li>"[university] college tour"</li>
+        </ul>
+
+        <p>
+            We extracted autogenerated transcripts and computed:
+        </p>
+
+        <ul>
+            <li>Word count</li>
+            <li>Sentiment polarity</li>
+            <li>Subjectivity</li>
+        </ul>
+
+        <h2>TF-IDF + Logistic Regression</h2>
+
+        <p>
+            We applied TF-IDF vectorization to transcripts and trained
+            a logistic regression classifier using stratified 5-fold cross validation.
+        </p>
+
+        <h2>Bidirectional LSTM</h2>
+
+        <p>
+            We also implemented a Bidirectional LSTM to capture contextual
+            sequence information beyond bag-of-words representations.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        TF-IDF measures how distinctive words are across transcripts.
+    </div>
+</div>
+
+<!-- ========================= YOUTUBE RESULTS IMAGE ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <img src="./images/image3.png" width="750px"/>
+
+    </div>
+
+    <div class="margin-right-block">
+        Performance comparison between transcript-based models.
+    </div>
+</div>
+
+<!-- ========================= YOUTUBE RESULTS ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h2>Performance</h2>
+
+        <p>
+            The TF-IDF-only model achieves 72.0% cross-validation accuracy.
+            Adding engineered sentiment features slightly reduces performance.
+        </p>
+
+        <p>
+            The Bidirectional LSTM performs near random chance at 50.8% accuracy,
+            suggesting that deep learning struggled under limited data conditions.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        Classical NLP outperformed deep learning on this dataset.
+    </div>
+</div>
+
+<!-- ========================= CONFUSION MATRIX ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <img src="./images/image4.png" width="650px"/>
+
+    </div>
+
+    <div class="margin-right-block">
+        Confusion matrix for TF-IDF logistic regression predictions.
+    </div>
+</div>
+
+<!-- ========================= ABLATION STUDY ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Ablation Study</h1>
+
+        <p>
+            To determine what drives model performance,
+            we conduct two ablation experiments.
+        </p>
+
+        <p>
+            First, transcript length alone achieves only 50.3% accuracy,
+            no better than random chance.
+        </p>
+
+        <p>
+            Second, shuffling transcript word order reduces performance from
+            72.0% to 62.5%, suggesting that phrasing and structure carry signal.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        Vocabulary choice matters more than transcript length.
+    </div>
+</div>
+
+<!-- ========================= MODEL COMPARISON ========================= -->
+
+<div class="content-margin-container" id="comparison">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Model Comparison</h1>
+
+        <p>
+            Our institutional MLP substantially outperforms transcript-based models,
+            achieving a weighted F1-score of 93.9%.
+        </p>
+
+        <p>
+            The transcript model reaches 72.0% accuracy,
+            significantly above random chance but well below institutional-data performance.
+        </p>
+
+        <p>
+            The performance gap likely represents information contained in structured
+            institutional records but absent from social media discourse.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        Institutional data remains far more predictive than online narratives.
+    </div>
+</div>
+
+<!-- ========================= ANALYSIS ========================= -->
+
+<div class="content-margin-container" id="analysis">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Key Analyses, Implications, and Limitations</h1>
+
+        <h2>Do Elite and Non-Elite Schools Talk About Different Things?</h2>
+
+        <p>
+            Keyword frequency analysis reveals surprisingly mild differences
+            between elite and non-elite school transcripts.
+        </p>
+
+        <p>
+            Non-elite schools discuss careers, opportunities,
+            internships, and campus life slightly more frequently,
+            supporting our hypothesis that non-elite institutions emphasize ROI.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        The linguistic differences between prestige tiers are weaker than expected.
+    </div>
+</div>
+
+<!-- ========================= KEYWORD IMAGE ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <img src="./images/image8.png" width="700px"/>
+
+    </div>
+
+    <div class="margin-right-block">
+        Keyword frequency comparison between elite and non-elite transcripts.
+    </div>
+</div>
+
+<!-- ========================= LIMITATIONS ========================= -->
+
+<div class="content-margin-container">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h2>Limitations</h2>
+
+        <p>
+            Our dataset is heavily skewed toward schools with larger online presences,
+            introducing selection bias.
+        </p>
+
+        <p>
+            Auto-generated transcripts also introduce substantial transcription noise,
+            which likely affected TF-IDF analysis.
+        </p>
+
+        <p>
+            Severe class imbalance and uneven geographic representation
+            further constrain interpretation.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        YouTube visibility itself may correlate with institutional prestige.
+    </div>
+</div>
+
+<!-- ========================= CONCLUSION ========================= -->
+
+<div class="content-margin-container" id="conclusion">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <h1>Conclusions, Ethics, and Future Work</h1>
+
+        <p>
+            Our findings suggest that YouTube content contains some meaningful prestige-related signal,
+            though substantially less than structured institutional data.
+        </p>
+
+        <p>
+            Interestingly, simple NLP methods outperform deep learning approaches on this dataset,
+            indicating that scale limitations matter heavily in educational social-media analysis.
+        </p>
+
+        <p>
+            Future work could expand the dataset,
+            include additional social platforms,
+            and explore transformer-based architectures such as BERT or RoBERTa.
+        </p>
+
+    </div>
+
+    <div class="margin-right-block">
+        NLP provides a scalable way to analyze institutional narratives at scale.
+    </div>
+</div>
+
+<!-- ========================= REFERENCES ========================= -->
+
+<div class="content-margin-container" id="references">
+
+    <div class="margin-left-block">
+    </div>
+
+    <div class="main-content-block">
+
+        <div class="citation" style="height:auto">
+
+            <br>
+
+            <span style="font-size:16px">References</span>
+
+            <br><br>
+
+            [1] Manaferra Social Discovery Survey, 2025<br><br>
+
+            [2] Academica Forum College Communications Survey<br><br>
+
+            [3] Journal of the Academy of Marketing Science, 2026<br><br>
+
+            [4] U.S. Department of Education College Scorecard<br><br>
+
+            [5] U.S. News Rankings Dataset (Kaggle)<br><br>
+
+        </div>
+
+    </div>
+
+    <div class="margin-right-block">
+    </div>
+</div>
 	</body>
 
 </html>
