@@ -1,12 +1,14 @@
 <html>
 <head>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <link rel="shortcut icon" href="https://mystickermania.com/cdn/stickers/logo/youtube-cat-logo-512x512.png">
 <style type="text/css">
 	body {
-		background-color: #3b3b3b;
+		background-color: #000000;
         color: white;
 	}
 
@@ -27,20 +29,22 @@
 		width: 100%; /* Change this percentage as needed */
         max-width: 1700px; /* Optional: Maximum width */
 		background-color: #000000;
-		border-left: 1px solid #DDD;
-		border-right: 1px solid #DDD;
+		border-left: 1px solid #323232;
 		padding: 40px 40px 40px 40px;
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; /* "Avenir" */
+		font-family: 'Inter', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; /* "Avenir" */
+        font-weight: 300;
+        line-height: 2;
 	}
 	.margin-left-block {
-			font-size: 14px;
+			font-size: 15px;
 			width: 30%; /* Change this percentage as needed */
 			max-width: 200px; /* Optional: Maximum width */
 			position: relative;
 			margin-left: 60px;
 			text-align: left;
-			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; /* "Avenir" */
+			font-family: 'Inter', sans-serif, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; /* "Avenir" */
 			padding: 5px;
+            line-height: 1.5;
 	}
 
 	img {
@@ -81,8 +85,9 @@
     font-weight: 300;
     font-size: 17px;
     flex-grow: 1;
-		width: 70%;
-    max-width: calc(100% - 290px); /* Adjust according to the width of .paper-code-tab */
+		width: 100%;
+    max-width: none; /* Adjust according to the width of .paper-code-tab */
+    line-height: 1.25;
 	}
 	table td, table td * {
 	    vertical-align: middle;
@@ -190,30 +195,31 @@
     <div class="main-content-block">
         <table class="header" align="center">
             <tr>
-                <td colspan="4" align = "center">
-                    <span style="font-size: 45px; font-family: 'Courier New', Courier, monospace;">
-                        The Prestige Safety Net: Does What Schools Say Online Match Rankings?
+                <td colspan="4" align = "center" style="padding-top:20px; padding-bottom:20px;">
+                    <span style="font-size: 45px; font-family: 'Georgia', Georgia, monospace;">
+                        The Prestige Safety Net: <br>
+                        Does What Schools Say Online Match Rankings?
                     </span>
                 </td>
             </tr>
 
             <tr>
-                <td align="center">
-                    <span style="font-size:17px">
+                <td align="center" style="padding:20px">
+                    <span style="font-size:20px">
                         <a href="https://www.linkedin.com/in/yunyoungchun/">Yuni Chun</a>
                     </span>
                 </td>
 
-                <td align="center">
-                    <span style="font-size:17px">
+                <td align="center" style="padding:20px">
+                    <span style="font-size:20px">
                         <a href="https://www.linkedin.com/in/angelina-jia/">Angelina Jia</a>
                     </span>
                 </td>
             </tr>
 
             <tr>
-                <td colspan="4" align="center">
-                    <span style="font-size:18px">
+                <td colspan="4" align="center" style="padding:20px">
+                    <span style="font-size:17px; font-family: 'Georgia', Georgia, monospace;" >
                         Final Project for STAT3106, Columbia University
                     </span>
                 </td>
@@ -271,15 +277,15 @@
 
         <p>
             Research shows that social media increasingly shapes how students choose colleges. 
-A 2025 survey found that 60% of students use social media to research colleges, with YouTube being one of the most used platforms. Students actively seek vlogs and firsthand experiences. Another study found that 69% of applicants used social media to research postsecondary institutions, primarily to see what campuses look like and to gather information that would help them decide where to apply.
+A 2025 survey found that 60% of students use social media to research colleges, with YouTube being one of the most used platforms.<sup><a href="#ref1">1</a></sup> Students actively seek vlogs and firsthand experiences. Another study found that 69% of applicants used social media to research postsecondary institutions, primarily to see what campuses look like and to gather information that would help them decide where to apply.<sup><a href="#ref2">2</a></sup>
         </p>
 
         <p>
-            A 2026 study in the Journal of the Academy of Marketing Science analyzed over one million social media posts from UK universities. It found that elite schools gain more engagement from posts about campus aesthetics and facilities, while non-elite schools do better by highlighting student support and personal interactions. This aligns with our hypothesis that prestige shapes what schools emphasize online.
+            A 2026 study in the Journal of the Academy of Marketing Science analyzed over one million social media posts from UK universities. It found that elite schools gain more engagement from posts about campus aesthetics and facilities, while non-elite schools do better by highlighting student support and personal interactions.<sup><a href="#ref3">3</a></sup> This aligns with our hypothesis that prestige shapes what schools emphasize online.
         </p>
 
         <p>
-            Similar work investigating social media discourse using machine learning includes a paper from Mustansiriyah University in Baghdad, Iraq, in which researchers used BERT and ML classifiers for multilingual sentiment analysis of university social media posts in order to illustrate the effectiveness of a combined BERT + ML classifier approach in a multilingual, dialect-rich context. This study therefore focused primarily on the mechanisms of sentiment analysis, rather than content-related evaluation of those results. Another relevant paper from researchers at Universitas Budi Luhur in Jakarta, Indonesia and Acharya Institute of Technology in Bengaluru, India studied the relationships between Twitter sentiment and university enrollment. While working in a similar domain, this study asks whether social media sentiment affects choice rather than whether prestige affects social media sentiment. 
+            Similar work investigating social media discourse using machine learning includes a paper from Mustansiriyah University in Baghdad, Iraq, in which researchers used BERT and ML classifiers for multilingual sentiment analysis of university social media posts in order to illustrate the effectiveness of a combined BERT + ML classifier approach in a multilingual, dialect-rich context.<sup><a href="#ref4">4</a></sup> This study therefore focused primarily on the mechanisms of sentiment analysis, rather than content-related evaluation of those results. Another relevant paper from researchers at Universitas Budi Luhur in Jakarta, Indonesia and Acharya Institute of Technology in Bengaluru, India studied the relationships between Twitter sentiment and university enrollment.<sup><a href="#ref5">5</a></sup> While working in a similar domain, this study asks whether social media sentiment affects choice rather than whether prestige affects social media sentiment. 
 
         </p>
 
@@ -308,7 +314,7 @@ A 2025 survey found that 60% of students use social media to research colleges, 
         </p>
 
         <p>
-            We used the institutional data from the U.S. Department of Education’s College Scorecard, which provides structured features for over 6,000 US colleges, including acceptance rate, cost of attendance, and demographic composition. For prestige labels, we used the US News college rankings, defining “elite” schools as the top 30 in the national university rankings. We also scraped school-specific YouTube video transcripts.
+            We used the institutional data from the U.S. Department of Education’s College Scorecard, which provides structured features for over 6,000 US colleges, including acceptance rate, cost of attendance, and demographic composition.<sup><a href="#ref6">6</a></sup> For prestige labels, we used the US News college rankings, defining “elite” schools as the top 30 in the national university rankings.<sup><a href="#ref7">7</a></sup> We also scraped school-specific YouTube video transcripts.
         </p>
 
         <p>
@@ -362,7 +368,7 @@ A 2025 survey found that 60% of students use social media to research colleges, 
 
     <div class="main-content-block">
 
-        <img src="./images/baseline.png" width="700px"/>
+        <img src="./images/baseline.png" width="500px"/>
 
     </div>
 </div>
@@ -380,7 +386,7 @@ A 2025 survey found that 60% of students use social media to research colleges, 
             The baseline MLP trained on institutional characteristics converges steadily over 16 epochs, with both training and validation loss decreasing consistently. The growing gap between the two curves in later epochs suggests mild overfitting, but validation loss still continues to decrease, suggesting this is not severe enough to undermine the model's utility.
         </p>
 
-        <img src="./images/baselineperformance.png" width="700px"/>
+        <img src="./images/baselineperformance.png" width="500px"/>
 
         <p>
             We evaluate performance using weighted F1 score, a metric that includes precision (when the model predicts elite, how often is it right?) and recall (of all the actual elite schools, how many did it catch?). We weight it because our dataset was imbalanced. Only about 10% of schools are elite, so a model that just predicts "non-elite" every time would look 90% accurate while being useless.
@@ -497,7 +503,7 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
             Second, we randomly shuffle the words in each transcript while preserving vocabulary and document length. The shuffled text achieves 62.5% accuracy, a 9.5 percentage point drop from the original 72%, demonstrating that word order and phrasing contribute meaningful signal beyond vocabulary alone.
         </p>
 
-        <img src="./images/ablation.png" width="650px"/>
+        <img src="./images/ablation.png" width="500px"/>
 
         <p>
             This reveals that vocabulary choice, not transcript length, drives prediction. The model learns genuine linguistic patterns rather than simply measuring how much someone talks.
@@ -522,13 +528,13 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
 
         </p>
 
-        <img src="./images/comparison1.png" width="650px"/>
+        <img src="./images/comparison1.png" width="600px"/>
 
         <p>
             Our institutional MLP achieves a weighted F1-score of 93.9%, correctly identifying elite schools with perfect recall in the validation set. 
         </p>
 
-        <img src="./images/transcriptmodel.png" width="650px"/>
+        <img src="./images/transcriptmodel.png" width="300px"/>
 
         <p>
             Our transcript model (TF-IDF with Logistic Regression) achieves 72.0% accuracy, significantly above random chance (p < 0.00001). The performance gap between these approaches (93.9% vs 72.0%) represents the information that is unique to institutional records and not present in college YouTube content.
@@ -551,9 +557,9 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
 
         <h2>Do Elite and Non-Elite Schools Talk About Different Things?</h2>
 
-        <img src="./images/keyword1.png" width="650px"/>
+        <img src="./images/keyword1.png" width="600px"/>
 
-        <img src="./images/keyword2.png" width="650px"/>
+        <img src="./images/keyword2.png" width="700px"/>
 
         <p>
             The keyword frequency analysis reveals that the content differences between elite and non-elite school transcripts are extremely mild: no category shows a large gap, and the largest difference across all six themes is just 1.20 mentions per 1,000 words. This means that elite and non-elite schools are largely discussing the same things on YouTube.
@@ -584,7 +590,7 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
             Top Distinguishing Words
         </h2>
 
-        <img src="./images/distinguish.png" width="700px"/>
+        <img src="./images/distinguish.png" width="500px"/>
 
         <p>
             The top distinguishing words for elite schools include "uh" and "gt"-- the former being a filler sound from auto-generated transcription, the latter likely an artifact or transcription error entirely. Their presence at the top of the list suggests that transcript quality and transcription noise may be driving the model.
@@ -610,9 +616,9 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
             We begin by mapping each school to a locale category using the College Scorecard's numeric locale codes, then merging this back onto the video dataset. Cross-validated predictions are generated to assess model accuracy at the locale level. We then compute transcript length statistics grouped by locale and run an independent samples t-test between urban and suburban schools.
         </p>
 
-        <img src="./images/locale1.png" width="700px"/>
+        <img src="./images/locale1.png" width="600px"/>
 
-        <img src="./images/locale2.png" width="700px"/>
+        <img src="./images/locale2.png" width="750px"/>
 
         <p>
             The town category stands out immediately: 100% of town school videos are from elite institutions, and town schools produce by far the longest average transcripts at 32,649 characters. The standard deviation of 34,902 is larger than the mean itself, indicating extreme variability across just 7 videos. 
@@ -622,7 +628,7 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
             Urban schools average 16,624 characters per transcript compared to suburban schools' 12,034, a difference that could potentially influence our findings. However, the t-test returns a p-value of 0.186, meaning the difference is not statistically significant, particularly given the severe sample size imbalance between the two groups.
         </p>
 
-        <img src="./images/locale3.png" width="700px"/>
+        <img src="./images/locale3.png" width="400px"/>
 
         <img src="./images/locale4.png" width="700px"/>
 
@@ -643,7 +649,7 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
             Either way, the location breakdown reveals that model performance is not uniform across geographic contexts, adding another layer of nuance to the already-limited claims we can make about what the transcript model has genuinely learned.
         </p>
 
-        <img src="./images/summary.png" width="700px"/>
+        <img src="./images/summary.png" width="600px"/>
 
         <p>
             Urban transcripts are 4,590 characters longer than suburban ones on average, and urban schools have a higher concentration of elite institutions in this dataset, suggesting a disruptive correlation between length, urbanness, and eliteness; however, the ablation study already identified vocabulary choice as the primary predictive signal. Nevertheless, these findings add another reason to be cautious about interpreting the transcript model's predictions.
@@ -737,15 +743,19 @@ We conduct a final evaluation of both transcript-based models, using 5-fold cros
 
             <br><br>
 
-            [1] Manaferra Social Discovery Survey, 2025<br><br>
+            <p id="ref1">1. https://www.manaferra.com/social-as-a-discovery-engine/#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjEwNTEwIiwidG9nZ2xlIjpmYWxzZX0%3D</p>
 
-            [2] Academica Forum College Communications Survey<br><br>
+             <p id="ref2">2. https://forum.academica.ca/forum/ucas-2025-communications-and-marketing</p>
 
-            [3] Journal of the Academy of Marketing Science, 2026<br><br>
+            <p id="ref3">3. https://link.springer.com/article/10.1007/s11747-025-01131-3</p>
 
-            [4] U.S. Department of Education College Scorecard<br><br>
+            <p id="ref4">4. https://digital-library.theiet.org/doi/abs/10.1049/icp.2025.0130</p>
 
-            [5] U.S. News Rankings Dataset (Kaggle)<br><br>
+            <p id="ref5">5. https://ejournal.ittelkom-pwt.ac.id/index.php/infotel/article/view/1390/587</p>
+
+            <p id="ref6">6. https://collegescorecard.ed.gov/data</p>
+
+            <p id="ref7">7. https://www.kaggle.com/datasets/neelgajare/2022-usa-college-rankings-more</p>
 
         </div>
 
