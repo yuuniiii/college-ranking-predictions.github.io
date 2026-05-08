@@ -340,7 +340,7 @@ A 2025 survey found that 60% of students use social media to research colleges, 
             After cleaning our dataset, we merge institutional data from College Scorecard with US News rankings. We define elite institutions as the top 30 in the 2022 US News rankings, so any school ranked 30 or below was labeled 1 (elite), otherwise 0 (non-elite).
         </p>
 
-        <h2>Baseline Model</h2>
+        <h2>Training and Performance</h2>
 
         <p>
             We define eleven institutional characteristics as our baseline features, separate the data into our feature matrix X and target vector y, and then split them into training, validation, and test sets using a 60/20/20 scheme.
@@ -442,32 +442,24 @@ A 2025 survey found that 60% of students use social media to research colleges, 
             We train the model for 10 epochs using binary cross-entropy loss and the Adam optimizer at a learning rate of 0.001. 
         </p>
 
-    </div>
-</div>
-
-<!-- ========================= YOUTUBE RESULTS ========================= -->
-
-<div class="content-margin-container">
-
-    <div class="margin-left-block">
-    </div>
-
-    <div class="main-content-block">
-
-        <h2>Performance</h2>
+        <h2>Training</h2>
 
         <p>
-            The TF-IDF-only model achieves 72.0% cross-validation accuracy.
-            Adding engineered sentiment features slightly reduces performance.
+            We use stratified cross-validation, which splits the data into five folds while making sure each fold preserves the same elite/non-elite ratio as the full dataset. This prevents a situation where all the elite schools end up in one fold, and the model never learns from them. 
+We conduct a final evaluation of both transcript-based models, using 5-fold cross-validation accuracy as our primary performance benchmark.
+
         </p>
+
+        <h2>Performance
+        </h2>
 
         <p>
-            The Bidirectional LSTM performs near random chance at 50.8% accuracy,
-            suggesting that deep learning struggled under limited data conditions.
+            Our TF-IDF-only model achieves a cross-validation accuracy of 72.0% (± 4.5%). Adding engineered features (sentiment, word count, subjectivity) slightly reduces performance, with the combined model reaching 69.7% (± 6.1%). A Bidirectional LSTM achieves only 50.8% accuracy. The LSTM's near-random performance suggests that with only 304 training samples, deep learning struggles to outperform simpler methods.
+
         </p>
 
-    </div>
 
+    </div>
 </div>
 
 <!-- ========================= CONFUSION MATRIX ========================= -->
@@ -479,39 +471,39 @@ A 2025 survey found that 60% of students use social media to research colleges, 
 
     <div class="main-content-block">
 
-        <img src="./images/image4.png" width="650px"/>
-
-    </div>
-</div>
-
-<!-- ========================= ABLATION STUDY ========================= -->
-
-<div class="content-margin-container">
-
-    <div class="margin-left-block">
-    </div>
-
-    <div class="main-content-block">
-
-        <h1>Ablation Study</h1>
+        <img src="./images/modelcomparison.png" width="650px"/>
 
         <p>
-            To determine what drives model performance,
-            we conduct two ablation experiments.
+            We created a confusion matrix for our best model (TF-IDF with Logistic Regression) on out-of-fold predictions.
+        </p>
+
+        <img src="./images/confusionmatrix.png" width="650px"/>
+
+        <p>
+            The model correctly classified 110 non-elite videos and 109 elite videos, for an overall accuracy of 72.0%. The elite class achieved 70.3% recall and 73.7% precision.
+        </p>
+
+        <h2>Ablation Study</h2>
+
+        <p>
+            To understand what actually drives our best performing model’s performance, we conduct two ablation experiments.
         </p>
 
         <p>
-            First, transcript length alone achieves only 50.3% accuracy,
-            no better than random chance.
+            First, we train a length-only baseline using transcript length as the sole feature. It achieves just 50.3% accuracy, statistically no better than random chance. This confirms that the model is not simply exploiting video length as a proxy for elite status.
         </p>
 
         <p>
-            Second, shuffling transcript word order reduces performance from
-            72.0% to 62.5%, suggesting that phrasing and structure carry signal.
+            Second, we randomly shuffle the words in each transcript while preserving vocabulary and document length. The shuffled text achieves 62.5% accuracy, a 9.5 percentage point drop from the original 72%, demonstrating that word order and phrasing contribute meaningful signal beyond vocabulary alone.
+        </p>
+
+        <img src="./images/ablation.png" width="650px"/>
+
+        <p>
+            This reveals that vocabulary choice, not transcript length, drives prediction. The model learns genuine linguistic patterns rather than simply measuring how much someone talks.
         </p>
 
     </div>
-
 </div>
 
 <!-- ========================= MODEL COMPARISON ========================= -->
@@ -526,18 +518,20 @@ A 2025 survey found that 60% of students use social media to research colleges, 
         <h1>Model Comparison</h1>
 
         <p>
-            Our institutional MLP substantially outperforms transcript-based models,
-            achieving a weighted F1-score of 93.9%.
+            Finally, we conduct a direct side-by-side comparison between our two modeling paradigms: the institutional MLP trained on structured college data vs. the transcript-based model trained on YouTube content. 
+
         </p>
 
-        <p>
-            The transcript model reaches 72.0% accuracy,
-            significantly above random chance but well below institutional-data performance.
-        </p>
+        <img src="./images/comparison1.png" width="650px"/>
 
         <p>
-            The performance gap likely represents information contained in structured
-            institutional records but absent from social media discourse.
+            Our institutional MLP achieves a weighted F1-score of 93.9%, correctly identifying elite schools with perfect recall in the validation set. 
+        </p>
+
+        <img src="./images/transcriptmodel.png" width="650px"/>
+
+        <p>
+            Our transcript model (TF-IDF with Logistic Regression) achieves 72.0% accuracy, significantly above random chance (p < 0.00001). The performance gap between these approaches (93.9% vs 72.0%) represents the information that is unique to institutional records and not present in college YouTube content.
         </p>
 
     </div>
@@ -557,15 +551,20 @@ A 2025 survey found that 60% of students use social media to research colleges, 
 
         <h2>Do Elite and Non-Elite Schools Talk About Different Things?</h2>
 
+        <img src="./images/keyword1.png" width="650px"/>
+
+        <img src="./images/keyword2.png" width="650px"/>
+
         <p>
-            Keyword frequency analysis reveals surprisingly mild differences
-            between elite and non-elite school transcripts.
+            The keyword frequency analysis reveals that the content differences between elite and non-elite school transcripts are extremely mild: no category shows a large gap, and the largest difference across all six themes is just 1.20 mentions per 1,000 words. This means that elite and non-elite schools are largely discussing the same things on YouTube.
         </p>
 
         <p>
-            Non-elite schools discuss careers, opportunities,
-            internships, and campus life slightly more frequently,
-            supporting our hypothesis that non-elite institutions emphasize ROI.
+            Career and internships, opportunities, social life, and campus life all appear at higher rates in non-elite transcripts. The career and opportunity findings, in particular, support our hypothesis that non-elite schools would emphasize practical aspects, such as professional networking, more heavily. 
+        </p>
+
+        <p>
+            Importantly, none of these differences are large enough to claim a reliable classification signal, further supporting the conclusion that YouTube transcript content does not cleanly encode institutional prestige.
         </p>
 
     </div>
@@ -581,42 +580,94 @@ A 2025 survey found that 60% of students use social media to research colleges, 
 
     <div class="main-content-block">
 
-        <img src="./images/image8.png" width="700px"/>
+        <h2>
+            Top Distinguishing Words
+        </h2>
+
+        <img src="./images/distinguish.png" width="700px"/>
+
+        <p>
+            The top distinguishing words for elite schools include "uh" and "gt"-- the former being a filler sound from auto-generated transcription, the latter likely an artifact or transcription error entirely. Their presence at the top of the list suggests that transcript quality and transcription noise may be driving the model.
+        </p>
+
+        <p>
+            The remaining elite-associated terms– library, work, people, actually, things, life– are largely generic, high-frequency conversational words with no obvious relationship to institutional prestige. The corresponding ratios are also modest.
+        </p>
+
+        <p>
+            The non-elite side tells a more interpretable story. Words like "excited," "home," "morning," "eat," and "cuz" paint a picture of more casual, lifestyle-oriented vlogging and routine daily life documentation.
+        </p>
+
+        <p>
+            Overall, the distinguishing words are weak and noisy enough to further corroborate the conclusion that there is no strong, clean linguistic signature separating elite from non-elite YouTube content.
+        </p>
+
+        <h2>
+            Do Urban and Suburban Schools Differ in Transcript Length or Model Performance?
+        </h2>
+
+        <p>
+            We begin by mapping each school to a locale category using the College Scorecard's numeric locale codes, then merging this back onto the video dataset. Cross-validated predictions are generated to assess model accuracy at the locale level. We then compute transcript length statistics grouped by locale and run an independent samples t-test between urban and suburban schools.
+        </p>
+
+        <img src="./images/locale1.png" width="700px"/>
+
+        <img src="./images/locale2.png" width="700px"/>
+
+        <p>
+            The town category stands out immediately: 100% of town school videos are from elite institutions, and town schools produce by far the longest average transcripts at 32,649 characters. The standard deviation of 34,902 is larger than the mean itself, indicating extreme variability across just 7 videos. 
+        </p>
+
+        <p>
+            Urban schools average 16,624 characters per transcript compared to suburban schools' 12,034, a difference that could potentially influence our findings. However, the t-test returns a p-value of 0.186, meaning the difference is not statistically significant, particularly given the severe sample size imbalance between the two groups.
+        </p>
+
+        <img src="./images/locale3.png" width="700px"/>
+
+        <img src="./images/locale4.png" width="700px"/>
+
+        <p>
+            Suburban schools achieve the highest accuracy at 0.941– albeit from a sample of only 17 videos.
+
+        </p>
+
+        <p>
+            The urban accuracy of 0.614 is the most reliable figure here, as it is computed over 280 videos and closely tracks the overall model performance reported earlier, which is expected given that urban schools constitute the majority of the dataset.
+        </p>
+
+        <p>
+            The model performs well below random chance on the town subset with an accuracy of 0.286. Given that all town school videos are from elite institutions, the model may be misclassifying elite town schools as non-elite, which could reflect genuine content differences or simply noise from a small sample of 7 videos.
+        </p>
+
+        <p>
+            Either way, the location breakdown reveals that model performance is not uniform across geographic contexts, adding another layer of nuance to the already-limited claims we can make about what the transcript model has genuinely learned.
+        </p>
+
+        <img src="./images/summary.png" width="700px"/>
+
+        <p>
+            Urban transcripts are 4,590 characters longer than suburban ones on average, and urban schools have a higher concentration of elite institutions in this dataset, suggesting a disruptive correlation between length, urbanness, and eliteness; however, the ablation study already identified vocabulary choice as the primary predictive signal. Nevertheless, these findings add another reason to be cautious about interpreting the transcript model's predictions.
+        </p>
+
+        <h2>
+            Was AI Really Needed?
+        </h2>
+
+        <p>
+            Interestingly, our results suggest that deep learning wasn't strictly necessary. Our Bidirectional LSTM, the most complex model we built, had basically random accuracy at 50.8%, while a simple TF-IDF logistic regression reached 72.0%. For a dataset of 304 transcripts, classical NLP outperformed deep learning.
+        </p>
+
+        <p>
+            That said, NLP as a whole was essential to this project. The core question of whether elite and non-elite schools use language differently can't be answered by reading hundreds of transcripts manually, and it can't be answered by just institutional data. The ablation study confirms this: vocabulary choice, not just school statistics, carries a real predictive signal. AI didn't give us a perfect answer, but it gave us the only scalable way to ask the question.
+        </p>
+
+
+
+
 
     </div>
 
 </div>
-
-<!-- ========================= LIMITATIONS ========================= -->
-
-<div class="content-margin-container">
-
-    <div class="margin-left-block">
-    </div>
-
-    <div class="main-content-block">
-
-        <h2>Limitations</h2>
-
-        <p>
-            Our dataset is heavily skewed toward schools with larger online presences,
-            introducing selection bias.
-        </p>
-
-        <p>
-            Auto-generated transcripts also introduce substantial transcription noise,
-            which likely affected TF-IDF analysis.
-        </p>
-
-        <p>
-            Severe class imbalance and uneven geographic representation
-            further constrain interpretation.
-        </p>
-
-    </div>
-
-</div>
-
 <!-- ========================= CONCLUSION ========================= -->
 
 <div class="content-margin-container" id="conclusion">
@@ -626,22 +677,43 @@ A 2025 survey found that 60% of students use social media to research colleges, 
 
     <div class="main-content-block">
 
-        <h1>Conclusions, Ethics, and Future Work</h1>
+        <h1>Conclusions</h1>
+
+        <h2>
+            Limitations
+        </h2>
 
         <p>
-            Our findings suggest that YouTube content contains some meaningful prestige-related signal,
-            though substantially less than structured institutional data.
+            One notable limitation is the uneven YouTube presence across institution types. Less selective schools are systematically underrepresented in student-generated video content, meaning our transcript dataset skews toward schools with larger, more active creator communities, which tend to be wealthier and more resourced institutions. This introduces a selection bias where the model is trained predominantly on content from schools that already have stronger online presences, potentially affecting the apparent signal between elite and non-elite categories.
+
         </p>
 
         <p>
-            Interestingly, simple NLP methods outperform deep learning approaches on this dataset,
-            indicating that scale limitations matter heavily in educational social-media analysis.
+            Additional limitations include the reliance on auto-generated transcripts, which introduce transcription noise that visibly affects our TF-IDF analysis. Our dataset is also geographically concentrated in urban institutions, and the severe class imbalance between elite and non-elite schools constrains what our models could reliably learn.
+        </p>
+
+        <h2>
+            Ethics
+        </h2>
+
+        <p>
+            In terms of potentially harmful usages, a classifier aimed to predict institutional prestige from social media content could theoretically be used by admissions consultants or even universities themselves to manipulate online perception and produce content optimized to signal prestige rather than reflect authentic student experience. 
         </p>
 
         <p>
-            Future work could expand the dataset,
-            include additional social platforms,
-            and explore transformer-based architectures such as BERT or RoBERTa.
+            Furthermore, our model encodes and reproduces the long-contested concept of institutional “eliteness”, an idea that is steeped in existing hierarchies of wealth and exclusion. By utilizing that definition as a prediction target, we risk perpetuating this social construct by using predictive machine learning categorization as the basis for any conclusions.
+        </p>
+
+        <p>
+            Finally, lower-income and less selective schools are unrepresented in our YouTube data– by training our model on this data, we continue to marginalize students who don’t have the time, resources, or social incentive to share their college experiences online.
+        </p>
+
+        <h2>
+            Future Work
+        </h2>
+
+        <p>
+            Future work could address the data imbalance problem by sourcing content from underrepresented institution types to build a more representative transcript dataset. Expanding beyond YouTube to include other platforms where students at a broader range of schools may have stronger presences could also help. On the modeling side, using pre-trained transformer models like BERT or RoBERTa might allow the model richer semantic representations and potentially surface patterns that our TF-IDF and LSTM approaches could not detect given the data constraints.
         </p>
 
     </div>
